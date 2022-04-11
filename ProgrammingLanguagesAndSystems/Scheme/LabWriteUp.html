@@ -1,0 +1,189 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<style>
+ol ol { list-style-type: lower-alpha; }
+ol ol ol { list-style-type: lower-roman; }
+</style>
+</head>
+<body data-new-gr-c-s-check-loaded="8.896.0" data-gr-ext-installed=""><center>
+<h2> Homework Assignment 9</h2>
+</center>
+<p>
+In this assignment you <i>cannot</i> use any imperative constructs of scheme, such
+as set! or the iterative loop constructs. You also are not allowed to use 
+higher level functions, such as length to get the length of the list. Instead you must
+use the basic built-in functions for manipulating a list--car, cdr, cons, append--and
+the built-in arithmetic operators to create your functions.
+</p><hr>
+<ol>
+<li> Write a function in scheme called <tt>swap</tt> that takes two 
+  arguments and returns a cons pair, with the smaller argument first
+  and the larger argument second. For example, the call:
+<pre>(swap 9 6)
+</pre>
+  should return the cons pair <tt>(6 . 9)</tt>. 
+<p>
+</p></li><li> Write a recursive function in scheme named <tt>avg</tt> 
+  that takes a list of numbers and returns
+  their average as a floating point number. For example, the call:
+<pre>(avg '(3 6 17 12 15))
+</pre>
+  should return 10.6 (and not 53/5 which is what you'll get if you do not
+  ensure that you have a floating point operand in one of the dividend or
+  divisor). For efficiency reasons, please do not write two functions that
+  separately compute the
+  sum of the list and the length of the list (i.e., do not traverse the
+  list twice). It is possible to write a solution to this question that
+  traverses the list only once and simultaneously computes the sum and length of the list and then returns
+  their quotient.  
+<p>
+  </p></li><li> Write a tail-recursive version of the following:
+    <pre>;; find minimum element in a list
+(define min
+  (lambda (l)
+    (cond
+      ((null? l) '())
+      ((null? (cdr l)) (car l))
+      (#t (let ((a (car l))
+                (b (min (cdr l))))
+            (if (&lt; b a) b a)))))))
+</pre>
+		   <p>
+</p></li><li> Write a recursive function named mergesort that takes a single list
+  argument and returns the list in sorted order. For example:
+<pre>(mergesort '(1 3 2 4 8 1 9 6 10))  ==&gt; '(1 1 2 3 4 6 8 9 10)
+</pre>
+     As long as you use the purely functional features of scheme (i.e., no
+     imperative constructs), you may design your merge sort function any way
+     you see fit. However, it helped me to define the following two helper 
+     functions, which
+     I created and tested first, and then used them to build mergesort:
+     <p>
+       </p><ol>
+	 <li> (merge L1 L2): takes two lists and returns a single merged list. 
+	   For example,
+<pre>(merge '(2 4 6) '(1 3 5 9 10)) ==&gt; '(1 2 3 4 5 6 9 10)
+</pre>
+         </li><li> (mergesortHelper L L1 L2 whichlist?): divides a list L into
+	   two separate, equal-sized lists L1 and L2. whichlist? indicates
+	   which list the next element of L should be added to. I used cons
+	   to add the next element of L to either L1 or L2. mergesortHelper
+	   should be recursive and should use continuation-style arguments
+	   for L1 and L2 (i.e., L1 and L2 grow with each successive call
+	   to mergesortHelper). mergesortHelper can either return L1 and L2 as
+	   a cons pair when L is empty, or it can directly implement the
+	   general case of merge sort once L is empty (i.e., call mergesort
+	   on each of the two lists L1 and L2 and call merge to merge the
+	   resulting two lists).
+       </li></ol>
+       My eventual mergesort was very short. It implemented the two base cases
+       where the list is either empty or has one element, in which case it
+       simply returns the list, and it implemented the general case by calling
+       mergesortHelper with the appropriate initial arguments.
+<p>
+  </p></li><li> Write a purely functional Scheme function to return a list containing
+    all elements of a given list that satisfy a given predicate. For example,
+<pre>(filter (lambda(x) (&lt; x 5)) '(3 9 5 8 2 4 7))
+</pre>
+should return <tt>(3 2 4</tt>). Your function should be named <tt>filter</tt>.
+<p>
+</p></li><li> A tree can be defined in Scheme as follows:
+<p>
+</p><ol>
+<li> The empty list is an empty tree
+</li><li> A list with a single element is a tree with a single node (i.e., 
+  a leaf)
+</li><li> The first element of a list is the root of the tree. The remaining
+  elements are sub-trees.
+</li></ol>
+For example the tree:
+<pre>           6
+           |
+      -----------
+      |    |    |
+      3    5    8
+     / \        |
+    11  9   ----------
+            |  |  |  |
+	    1  20 4  17
+              /  \
+             7   10
+</pre>
+would be represented as the list:
+<pre>'(6 (3 (11) (9)) (5) (8 (1) (20 (7) (10)) (4) (17)))
+</pre>
+     Write a function named
+<tt>fringe</tt> that takes a list which represents a tree
+and returns a list of
+     the leaves of the tree, in left-to-right order. For example,
+<pre>(fringe '(6 (3 (11) (9)) (5) (8 (1) (20 (7) (10)) (4) (17))))
+</pre>
+should return
+<pre>'(11 9 5 1 7 10 4 17)
+</pre>
+<b>You must write a recursive definition of
+fringe that use the map and fold functions. Look at the
+<a href="http://youtu.be/bDLgoBsJPhc">Functional-Languges-Higher-Order-Functions</a> lecture and the 
+<a href="http://web.eecs.utk.edu/~bvanderz/cs365/notes/functional/Functional-Languages-Higher-Order-Fcts.pdf">slides</a>
+from that lecture if you're not sure what map and fold are. <tt>map</tt> is
+a Scheme built-in function and the Scheme implementation for <tt>fold</tt>
+can be found on the slides.
+I would use the map function to apply fringe to the list of sub-trees
+for a tree and then use fold to append the lists returned by each invocation
+of fringe into a single list.</b>
+<p>
+</p></li><li> In this problem you are going to create a "stream" that lazily generates
+  fibonacci numbers and you are going to create a function named printFib that
+  prints the first n elements of this list. To complete this problem, you
+  need to write two pieces of Scheme code:
+  <p>
+    </p><ol>
+      <li> Define a "stream" named <b>fib</b> that lazily creates a list
+	of fibonacci numbers, assuming that f0 is 0 and f1 is 1. Use the
+	natural number example from the functional languages evaluation
+	<a href="http://web.eecs.utk.edu/~bvanderz/cs365/notes/functional/Functional_Languages_Evaluation.pdf">slides</a> (slide 9) as a 
+	template. Note that you will need to use Scheme's <tt>delay</tt>
+	function. Here is a good example of a fib function to modify:
+<pre>(define fib
+  (lambda (n)
+    (letrec ((fib-helper
+		(lambda (f1 f2 i)
+		  (if (= i n)
+		      f2
+		      (fib-helper f2 (+ f1 f2) (+ i 1))))))
+	(fib-helper 0 1 0))))
+</pre>
+      <p>
+      </p></li><li> Define a function named <b>printFib</b> that takes two arguments,
+	the <b>fib</b> stream object you defined in part a and a number n
+	that represents the number of fibonacci numbers to print. Print these
+	fibonacci numbers. For example:
+<pre>(printFib fib 10) ==&gt; 0 1 1 2 3 5 8 13 21 34 
+</pre>
+        My solution used the display function to print the numbers and
+        the let construct to ensure that the display functions were executed
+        in the correct order (i.e., the display function that prints a number
+        was executed before the display function that printed a space). 
+        My let statement used an empty list for the name-value bindings. Note that
+        you will need to use Scheme's <tt>force</tt> function. Again look
+        at the natural number example as
+        a template for using the force function. However, your print function
+	will need to be more sophisticated than the simple <tt>tail</tt>
+	function defined in that example.						   </li></ol>
+<p>
+</p></li><li> <b>Extra Credit (30 points)</b>: 
+  Do the online TNVoice evaluation for me and any of the TAs
+  you wish to, and then upload a screenshot of the confirmation
+  page to the Canvas TNVoice link by Wed. April 28 at 11:59pm.
+</li></ol>
+<hr>
+<h2> What to Submit </h2>
+<p>
+</p><ol>
+<li> The functions for the two parts should be placed in two files
+named <tt>hw9_pt1.scm</tt> and <tt>hw9_pt2.scm</tt>. 
+We will load this file into the scheme read-eval-print
+loop and call your functions with test data to check them.
+</li><li> Your TNVoice confirmation page if you choose to complete it.
+</li></ol>
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
