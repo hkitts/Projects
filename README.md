@@ -51,3 +51,7 @@ These are mostly scientific computing problems from the book. They are just some
 [Youtube Clickbait](https://github.com/fdac21/youtubeClickbait)
 - This project used Googles API to pull video data from Youtube. Then we tried to determine if a video's title was clickbait using text analysis, a neural network, and a decision tree.
 
+## CS420 Biolog-Inspired Computation
+
+[Particle Swarm Optimization](https://github.com/hkitts/Projects/tree/main/BiologInspired_Computation/ParticleSwarmOptimization)
+- Compares the optimization functions of Booth and Rosenbrock by testing different parameters, including: number of particles, inertia, cognition, and social.
