@@ -1,0 +1,3 @@
+READ t.pgm
+PANEL 2 2
+WRITE pgm2.pgm

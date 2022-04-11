@@ -1,0 +1,11 @@
+Hunter Kitts
+
+1. What is complexity of your implementation?
+
+I think by using BFS and Edmonds-Karp my complexity is
+O(VE^2). I used bfs which uses a list/queue and several
+classes. One class holds the nodes, the other the edges.
+Finally my canSpell class uses Edomds-Karp and repeatedly
+calls BFS to look for a path. I think the total complexity
+is this becasue the rest of my program just consists of
+pushing back into vectors and creating node pointers.
