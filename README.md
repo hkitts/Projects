@@ -1,7 +1,6 @@
 # Projects
-This repository is some of my projects I worked on during my time at UTK.
+This repository contains some of my projects I have worked on during my time at UTK.
 
-In addition to the projects myself I have included some webpages for the classes themselves.
 
 ## CS202 -- Data Structures & Algorithms I
 Class webpage: https://web.eecs.utk.edu/~jplank/plank/classes/cs140/
@@ -46,4 +45,9 @@ Textbook - Numerical Methods in Engineering with Python, Third Edition by Jaan K
 [CS370 Projects](https://github.com/hkitts/Projects/tree/main/ScientificComputing)
 
 These are mostly scientific computing problems from the book. They are just some examples of using python.
+
+## CS545 Digital Archaeology
+
+[Youtube Clickbait](https://github.com/fdac21/youtubeClickbait)
+- This project used Googles API to pull video data from Youtube. Then we tried to determine if a video's title was clickbait using text analysis, a neural network, and a decision tree.
 
