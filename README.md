@@ -1,6 +1,25 @@
 # Projects
 This repository contains some of my projects I have worked on during my time at UTK.
 
+## CS494 Advanced Programming and Algorithms
+
+Class webpage: https://web.eecs.utk.edu/~jplank/plank/classes/cs494/494/index.html
+
+[CS494 Projects](https://github.com/hkitts/Projects/tree/main/AdvancedProgrammingAndAlgorithms)
+
+- [Alice and Board Folding](https://github.com/hkitts/Projects/tree/main/AdvancedProgrammingAndAlgorithms/AliceAndBoardFolding)
+
+- [B-Tree](https://github.com/hkitts/Projects/tree/main/AdvancedProgrammingAndAlgorithms/B-Tree)
+  - Very cool but difficult project. This is an implementation of B-Tree on a disk. It uses a disk emulator similar to FAT. The B-Tree is implemented on top of the disk emulation and each node of the tree fits on one sector of the disk. Requires reading bytes, dealing with LBAs, recursion and memory management all on top of writing B-Tree algorithm.
+
+- [Jgraph Project](https://github.com/hkitts/ps_trophies)
+  - Different project that uses Jgraph written by Dr. Plank. Similar to Matplotlib, this graphing tool uses postscript and has a lot more customization options. [Jgraph Webpage](https://web.eecs.utk.edu/~jplank/plank/jgraph/jgraph.html)
+
+- [File Allocation Table](https://github.com/hkitts/Projects/tree/main/AdvancedProgrammingAndAlgorithms/FileAllocationTable)
+
+- [Floyd-Warshall](https://github.com/hkitts/Projects/tree/main/AdvancedProgrammingAndAlgorithms/Floyd-Warshall)
+
+- [SIMD](https://github.com/hkitts/Projects/tree/main/AdvancedProgrammingAndAlgorithms/SIMD)
 
 ## CS202 -- Data Structures & Algorithms I
 Class webpage: https://web.eecs.utk.edu/~jplank/plank/classes/cs140/
