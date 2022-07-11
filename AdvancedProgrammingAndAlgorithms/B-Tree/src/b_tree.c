@@ -756,9 +756,46 @@ int b_tree_key_size(void *b_tree)
 	return bt->key_size;	
 }
 
-//I didn't implement this
+/* Recursive print helper to print out b-tree 
+ * Prints via breath first recursion */
+void print_helper(void *b_tree, unsigned int lba){
+    B_Tree *bt;
+    Tree_Node *tn = NULL;
+    int i;
+    unsigned int next_lba;        //lba for next node to be printed
+
+    //set up for node to read and tree
+    bt = (B_Tree *)b_tree;
+    tn = read_tree_node(bt, lba);
+
+    //print the node info
+    printf("root lba: 0x%08x.  Internal: %d\n", tn->lba, tn->internal);
+    for(i=0; i < (tn->nkeys)+1; i++){
+        printf("Entry %2d: Key: %-33s LBA: 0x%08x\n", i, tn->keys[i], tn->lbas[i]);
+    }
+
+    //if the node is not internal then more lbas can be printed
+    //recursively print the next lbas available
+    if(tn->internal == 1){
+        for(i=0; i < (tn->nkeys)+1; i++){
+            next_lba = tn->lbas[i];
+            printf("next_lba: %d\n", next_lba);
+            print_helper(b_tree, next_lba);
+        }
+    }
+}
+
+
+//Print out entire b_tree
 void b_tree_print_tree(void *b_tree)
 {
-	printf("This does nothing yet\n");	
+    B_Tree *bt;
+    Tree_Node *tn = NULL;
+    int i;
+    unsigned int lba;        //lba for next node to be printed
+
+    bt = (B_Tree *)b_tree;
+    print_helper(b_tree, bt->root_lba);
+
 }
 
